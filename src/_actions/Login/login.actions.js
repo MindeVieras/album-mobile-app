@@ -1,6 +1,5 @@
 
 import { AsyncStorage } from 'react-native'
-import { Actions } from 'react-native-router-flux'
 import { Toast } from 'native-base'
 
 import { baseServerUrl } from '../../Config'
@@ -12,7 +11,7 @@ export const loginActions = {
   logout
 }
 
-function login(username, password) {
+function login(username, password, history) {
   return dispatch => {
     dispatch(request())
 
@@ -22,7 +21,9 @@ function login(username, password) {
         if (res.ack == 'ok') {
           const user = res.data
           dispatch(success(user))
-          Actions.HomePage()
+          if (history) {
+            history.push('/')
+          }
         } else {
           dispatch(failure(res.msg))
           Toast.show({
@@ -43,12 +44,14 @@ function login(username, password) {
   function failure(error) { return { type: userConstants.LOGIN_FAILURE, error } }
 }
 
-function logout() {
+function logout(history) {
   return dispatch => {
+    console.log(history)
+    history.push('/login')
     AsyncStorage.removeItem('id_token')
       .then(() => {
         dispatch(logout())
-        Actions.Login()
+        // Actions.Login()
       })
       .catch(err => {
         console.log('AsyncStorage error: ' + err.message)

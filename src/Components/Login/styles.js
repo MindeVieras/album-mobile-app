@@ -5,12 +5,14 @@ export default styles = StyleSheet.create({
   container: {
     backgroundColor: '#4CAF50',
     // display: 'flex',
-    // flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flex: 1,
+    // flexDirection: `column`,
+    // justifyContent: `center`,
+    alignItems: `center`
   },
   content: {
-    width: 300
+    maxWidth: 300,
+    width: `100%`
   },
   form: {
     width: '100%'
