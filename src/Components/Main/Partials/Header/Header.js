@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { Container, Header as NbHeader, Right, Body, Title, Button, Icon } from 'native-base'
 
-import { uiActions } from '../../../_actions'
+import { uiActions } from '../../../../_actions'
 
 class Header extends Component {
 
@@ -14,9 +14,8 @@ class Header extends Component {
   }
 
   openMenuSidebar() {
-    console.log('Opening menu sidebar')
-    // const { dispatch } = this.props
-    this.props.dispatch(uiActions.sidebarOpen(true))
+    const { dispatch } = this.props
+    dispatch(uiActions.sidebarOpen(true))
   }
 
   render() {
@@ -39,8 +38,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  // history: PropTypes.object.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
 export default connect()(Header)

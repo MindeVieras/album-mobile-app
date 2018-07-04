@@ -6,8 +6,9 @@ import { NativeRouter, Switch, Route } from 'react-router-native'
 import { Root } from 'native-base'
 
 import Login from './Components/Login'
-import PrivateRoute from './Components/PrivateRoute'
 import Main from './Components/Main'
+import PrivateRoute from './Components/PrivateRoute'
+import NotFound from './Components/NotFound'
 
 class App extends Component {
 
@@ -17,7 +18,9 @@ class App extends Component {
         <NativeRouter>
           <Switch>
             <PrivateRoute exact path="/" component={ Main } />
+            <PrivateRoute path="/main" component={ Main } />
             <Route path="/login" component={ Login } />
+            <PrivateRoute component={ NotFound } />
           </Switch>
         </NativeRouter>
       </Root>

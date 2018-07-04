@@ -42,6 +42,7 @@ class Login extends Component {
                   >
                     <Text>Login</Text>
                   </Button>
+
                 </Form>
               </Body>
             </CardItem>
@@ -76,6 +77,8 @@ function submit(values, dispatch, form) {
 }
 
 Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   loading: PropTypes.bool
 }
